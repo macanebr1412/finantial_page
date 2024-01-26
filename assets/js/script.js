@@ -173,7 +173,7 @@ const sections = document.querySelectorAll("[data-section]");
 
 const scrollReveal = function () {
   for (const section of sections) {
-    if (section.getBoundingClientRect().top < window.innerHeight / 1.5) {
+    if (section.getBoundingClientRect().top < window.innerHeight) {
       section.classList.add("active");
     } else {
       section.classList.remove("active");
