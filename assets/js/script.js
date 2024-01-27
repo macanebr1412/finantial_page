@@ -66,56 +66,45 @@ addEventOnElement(window, "scroll", activeHeader);
 // HOME
 //
 
-const circleButtons = document.querySelectorAll(".circle");
-const slideImg = document.querySelector("[data-slide-img]");
-const slideText = document.querySelector("[data-slide-text]");
+const slideBox = document.querySelectorAll(".slide-wrapper .slide-box");
+const slideBtn = document.querySelectorAll(".home .btn-box button");
 
-circleButtons[0].onclick = function () {
-  slideImg.src = "assets/images/gift.png";
-
-  slideText.innerHTML = `  <h2 class="slide-title">macan gift card</h2>
-                           <h3>Spread Love, Not FUD</h3>
-                           <p>Gift crypto to your loved ones</p>
-                           <div class="button-box">
-                               <button class="btn btn-primary">READ MORE</button>
-                            </div>
-                           `;
-};
-circleButtons[1].onclick = function () {
-  slideImg.src = "assets/images/calc.jfif";
-
-  slideText.innerHTML = `<h2 class="slide-title">recurring buy calculator</h2>
-                         <p>
-                           Reviwe your potential earning with
-                           <em>recurring buy calculator</em>
-                         </p>
-                         <div class="button-box">
-                           <button class="btn btn-primary">READ MORE</button>
-                         </div>
-                         `;
-};
-circleButtons[2].onclick = function () {
-  slideImg.src = "assets/images/visaCard.jfif";
-
-  slideText.innerHTML = `  <h2 class="slide-title">buy crypto with visa card</h2>
-                           <p>
-                             Now you can buy crypto with your
-                             <em>Debit/Visa</em> card easy and fast
-                           </p>
-                           <div class="button-box">
-                             <button class="btn btn-primary">READ MORE</button>
-                           </div>
-                           `;
-};
-
-const activeCircleButtons = function () {
-  for (const circleButton of circleButtons) {
-    circleButton.classList.remove("active");
-    this.classList.add("active");
+let slideCounter = 0;
+const showSlide = function () {
+  slideCounter++;
+  for (const slide of slideBox) {
+    slide.classList.add("d-none");
+  }
+  document.querySelector(".slide" + slideCounter).classList.remove("d-none");
+  for (const btn of slideBtn) {
+    btn.classList.remove("active");
+  }
+  document.getElementById("btn" + slideCounter).classList.add("active");
+  if (slideCounter == 3) {
+    slideCounter = 0;
   }
 };
+showSlide();
+let intervalHandler = setInterval(showSlide, 8000);
 
-addEventOnElement(circleButtons, "click", activeCircleButtons);
+document.getElementById("btn1").onclick = function () {
+  clearInterval(intervalHandler);
+  slideCounter = 0;
+  showSlide();
+  intervalHandler = setInterval(showSlide, 8000);
+};
+document.getElementById("btn2").onclick = function () {
+  clearInterval(intervalHandler);
+  slideCounter = 1;
+  showSlide();
+  intervalHandler = setInterval(showSlide, 8000);
+};
+document.getElementById("btn3").onclick = function () {
+  clearInterval(intervalHandler);
+  slideCounter = 2;
+  showSlide();
+  intervalHandler = setInterval(showSlide, 8000);
+};
 
 //
 // INTRO

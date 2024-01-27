@@ -41,7 +41,7 @@
   /* 
   * spacing
   */
-  --section-padding: 120px;
+  --section-padding: 100px;
 
   /* 
   * shadow
@@ -191,6 +191,10 @@ h3 {
 .w-100 {
   width: 100%;
 }
+.d-none {
+  display: none;
+}
+
 .section {
   padding-block-end: var(--section-padding);
   padding-inline: 10px;
@@ -315,8 +319,11 @@ h3 {
   font-size: var(--fs-1);
   font-weight: var(--fw-700);
   cursor: pointer;
+  transition: var(--transition-1);
 }
-
+.header .logo:hover {
+  color: var(--green-cyan);
+}
 .header .nav-toggle-btn {
   padding: 8px 3px;
 }
@@ -388,42 +395,100 @@ h3 {
   margin-block-start: 100px;
 }
 .home .home-title {
-  margin-block-end: 20px;
-}
-.home .slide .img-wrapper {
-  margin-block-end: 40px;
-}
-.home .slide img {
-  margin-block-end: 20px;
+  margin-block-start: 40px;
 }
 
-.home .slide .slide-text {
-  text-align: center;
-  margin-block-end: 10px;
+.home .slide-wrapper .slide-box {
+  position: relative;
 }
-.home .button-box {
+.home .slide-wrapper .slide-box img {
+  opacity: 0;
+  animation: anim-img 2s ease forwards;
+}
+@keyframes anim-img {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.home .slide-wrapper .slide-box .slide-content {
+  padding-block-start: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  transform: scale(0);
+  opacity: 0;
+  animation: content-show 3s 0.5s ease forwards;
+}
+
+@keyframes content-show {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.home .slide-wrapper .slide-box.slide1 .slide-title a {
+  font-size: var(--fs-8);
+  text-decoration: underline;
+}
+.home .slide-wrapper .slide-box.slide1 .slide-title a:is(:hover, :focus) {
+  color: var(--vivid-purple);
+}
+.home .slide-wrapper .slide3 .content-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--black-1);
+  opacity: 0.7;
+  height: 0;
+  animation: bg-anim 1s ease forwards;
+}
+@keyframes bg-anim {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+.home .slide-wrapper .slide-box .slide-content .button-box {
   display: flex;
   justify-content: center;
-  gap: 10px;
   align-items: center;
 }
-
-.home .button-box .circle {
-  background-color: var(--luminos-orange);
+.home .btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-block-start: 10px;
+}
+.home .btn-box button {
   cursor: pointer;
-  width: 20px;
-  height: 20px;
-  border-radius: 50px;
-  transition: var(--transition-3);
+  opacity: 0.3;
+  transition: var(--transition-1);
 }
-.home .button-box .circle.active {
-  background-color: var(--vivid-red);
-  width: 50px;
+.home .btn-box button.active {
+  opacity: 1;
 }
-.home P {
-  color: var(--wp--preset--color--white);
-  margin-block-end: 20px;
+.home .btn-box .circle-span {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--wp--preset--color--white);
 }
+
 /* 
 * TRADE
 */
@@ -448,6 +513,10 @@ h3 {
 
 .trade .tab-nav .tab-btn {
   padding: 8px 12px;
+  transition: var(--transition-1);
+}
+.trade .tab-nav .tab-btn:is(:hover, :focus) {
+  color: var(--dark-blue);
 }
 
 .trade .tab-content {
@@ -821,6 +890,13 @@ h3 {
     width: 100%;
     margin-inline: auto;
   }
+  /* 
+  *HOME
+  */
+  .home .slide-wrapper .slide-box *:not(:last-child) {
+    font-size: var(--fs-2);
+    margin-block-end: 30px;
+  }
 }
 
 @media screen and (min-width: 786px) {
@@ -834,42 +910,8 @@ h3 {
   /* 
   * HOME
   */
-  .home .slide .slide-text h2 {
-    font-size: var(--fs-3);
-    margin-block-end: 40px;
-  }
-  .home .slide .slide-text h3 {
-    font-size: var(--fs-4);
-    margin-block-end: 20px;
-  }
-
-  .home .slide-wrapper .slide .slide-content {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    gap: 10px;
-    margin-block-end: 30px;
-    align-items: center;
-  }
-  .home .img-wrapper {
-    width: 60%;
-    height: auto;
-    transform: translateY(0);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 10px;
-  }
-  .home .button-box {
-    flex-direction: column;
-  }
-  .home .button-box .circle.active {
-    background-color: var(--vivid-red);
-    width: 20px;
-    height: 50px;
-  }
-  .home .slide-text {
-    width: 30%;
+  .home .slide-wrapper .slide-box h2 {
+    font-size: var(--fs-1);
   }
 
   /* 
