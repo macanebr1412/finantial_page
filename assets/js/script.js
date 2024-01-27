@@ -87,24 +87,24 @@ const showSlide = function () {
 showSlide();
 let intervalHandler = setInterval(showSlide, 8000);
 
-document.getElementById("btn1").onclick = function () {
-  clearInterval(intervalHandler);
-  slideCounter = 0;
-  showSlide();
-  intervalHandler = setInterval(showSlide, 8000);
-};
-document.getElementById("btn2").onclick = function () {
-  clearInterval(intervalHandler);
-  slideCounter = 1;
-  showSlide();
-  intervalHandler = setInterval(showSlide, 8000);
-};
-document.getElementById("btn3").onclick = function () {
-  clearInterval(intervalHandler);
-  slideCounter = 2;
-  showSlide();
-  intervalHandler = setInterval(showSlide, 8000);
-};
+// document.getElementById("btn1").onclick = function () {
+//   clearInterval(intervalHandler);
+//   slideCounter = 0;
+//   showSlide();
+//   intervalHandler = setInterval(showSlide, 8000);
+// };
+// document.getElementById("btn2").onclick = function () {
+//   clearInterval(intervalHandler);
+//   slideCounter = 1;
+//   showSlide();
+//   intervalHandler = setInterval(showSlide, 8000);
+// };
+// document.getElementById("btn3").onclick = function () {
+//   clearInterval(intervalHandler);
+//   slideCounter = 2;
+//   showSlide();
+//   intervalHandler = setInterval(showSlide, 8000);
+// };
 
 //
 // INTRO
